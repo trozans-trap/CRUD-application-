@@ -1,7 +1,7 @@
 Dependencies Installed -
-  body-parser
-  express
-  mongoose
+  body-parser,
+  express,
+  mongoose,
   nodemon
 
 Directly use Api Heroku hosted link  with further additions in link (ex - /server ) for each case as mentioned under -
@@ -14,12 +14,12 @@ other wise use
 Get all server ->  
      /server
 
-Get server by passing server-id as parameter ->
-      /server/123    || /server/id
+Get server by passing server-id as parameter ->   
+     /server/123    || /server/id
       
    *(if id doesn't exist 404 message is returned)
 
-PUT server
+PUT server ->   
     /server
 
     JSON-encoded message body
@@ -31,13 +31,13 @@ PUT server
    }
    **(Here id must be same as of the orignal server object else error will be thrown , everything else can be updated)
 
-DELETE server ->
+DELETE server ->  
       /server/123    || /server/id
 
-GET(find) server by name ->
+GET(find) server by name ->  
      /serverbyname/my centos  || /serverbyname/name
 
-POST(create) Server ->
+POST(create) Server ->    
      /server
      
     JSON-encoded message body
@@ -53,7 +53,7 @@ POST(create) Server ->
 *In the cases where id is passed if the object doesn't exists message of 404 or id doesn't exist will appear
 
 
-Explanation-
+Explanation-   
 
 Main file where server is running is app.js
 config->keys.js consist mongo atlas link (Mongodb is used as database)
