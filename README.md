@@ -5,8 +5,7 @@ Dependencies Installed -
   nodemon
 
 Directly use Api Heroku hosted link  with further additions in link (ex - /server ) for each case as mentioned under -
-  https://hungerstaytask.herokuapp.com
-
+  https://hungerstaytask.herokuapp.com      
 other wise use 
   https://localhost:4000
 
@@ -15,8 +14,7 @@ Get all server ->
      /server
 
 Get server by passing server-id as parameter ->   
-     /server/123    || /server/id
-      
+     /server/123    || /server/id          
    *(if id doesn't exist 404 message is returned)
 
 PUT server ->   
@@ -55,9 +53,9 @@ POST(create) Server ->
 
 Explanation-   
 
-Main file where server is running is app.js
-config->keys.js consist mongo atlas link (Mongodb is used as database)
-models->server.js consist of defined schema
+Main file where server is running is app.js     
+config->keys.js consist mongo atlas link (Mongodb is used as database)    
+models->server.js consist of defined schema    
 
 To make the code easy to debug and make it easy to understand by everyone GET , POST , PUT , DELETE are written seperately in run.js(under controller) and exporeted to api.js (in routes)
 
