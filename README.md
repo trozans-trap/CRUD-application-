@@ -8,18 +8,19 @@ Directly use Api Heroku hosted link  with further additions in link (ex - /serve
   https://hungerstaytask.herokuapp.com
 
 other wise use 
-  https://localhost:400
+  https://localhost:4000
 
 
-Get all server
-   /server
+Get all server ->  
+     /server
 
-Get server by passing server-id as parameter
-   /server/123    || /server/id
+Get server by passing server-id as parameter ->
+      /server/123    || /server/id
+      
    *(if id doesn't exist 404 message is returned)
 
 PUT server
-   /server
+    /server
 
     JSON-encoded message body
    {
@@ -30,14 +31,15 @@ PUT server
    }
    **(Here id must be same as of the orignal server object else error will be thrown , everything else can be updated)
 
-DELETE server
-    /server/123    || /server/id
+DELETE server ->
+      /server/123    || /server/id
 
-GET(find) server by name
-    /serverbyname/my centos  || /serverbyname/name
+GET(find) server by name ->
+     /serverbyname/my centos  || /serverbyname/name
 
-POST(create) Server
-    /server
+POST(create) Server ->
+     /server
+     
     JSON-encoded message body
    {
       "name": "vikalp",
