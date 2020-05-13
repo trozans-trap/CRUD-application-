@@ -49,7 +49,7 @@ PUT User
       "Language":"java",                                                               
       "Framework":"spring"                                                                                         
    }                                                
-   **(Here id used in params is _id of the user object)                                                            
+   **(Here id used in params is id of the user object)                                                            
                                                        
 DELETE User                                    
     https://hungerstaytask.herokuapp.com/api/users/123    ||  https://hungerstaytask.herokuapp.com/api/users/:id                                   
