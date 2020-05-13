@@ -15,7 +15,7 @@ mongoose.connect(db, {useUnifiedTopology: true, useNewUrlParser: true, useFindAn
  .catch(err=> console.log(err));
 
 //Routes
-app.use('/',require('./routes/api'));
+app.use('/api',require('./routes/api'));
 
 //Listen to port
 var port =  process.env.PORT || 4000;

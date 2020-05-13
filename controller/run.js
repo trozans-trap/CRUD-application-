@@ -1,91 +1,91 @@
 //requiring schema from models
-const Server = require('../models/server');
+const User = require('../models/user');
 
-//get when No id is passed
-exports.getallserver = (req,res)=>{ 
 
-    Server.find({}).then((user)=>res.send(user)).catch(err=>console.log(err))
-   
+//get when no id is passed i.e. get all users
+exports.getallusers = async (req, res) => {
+
+    await User.find({})
+        .then((user) =>
+            res.send(user))
+        .catch(err =>
+            res.status(500).json(err))
+
 }
 
 //get when some id is passed as parameter
-exports.getserver = (req,res)=>{ 
-    var id = req.params.id;
-    Server.find({ id:id})
-    .then((person)=>{
-        if(person && person!="")
-        {
-         res.send(person)
-        }
-        else
-        {
-            res.send("404 , No server with such id ");
-        }
-    }).catch(err=>res.send(err))
-    
+exports.getuser = async (req, res) => {
+    var _id = req.params.id;
+    await User.find({ _id: _id })
+        .then((person) => {
+            if (person && person != "") {
+                res.send(person)
+            }
+            else {
+                res.status(404).json(" No User with such id ");
+            }
+        }).catch(err => res.status(500).json(err))
+
 }
 
 //get server by name
-exports.getserverbyname = (req,res)=>{
+exports.getuserbyname = async (req, res) => {
     var name = req.params.name;
-    Server.find({ name:name})
-    .then((person)=>{
-       if(person && person!="")
-       {
-        res.send(person)
-       }
-       else
-       {
-           res.send("404 , No server with such id ");
-       }
-    }).catch(err=>res.send(err))
+    await User.find({ name: name })
+        .then((person) => {
+            if (person && person != "") {
+                res.send(person)
+            }
+            else {
+                res.status(404).json(" No user with such id ");
+            }
+        }).catch(err => res.status(500).json(err))
 }
 
 //Create server object
-exports.postserver = (req,res,next)=>{
+exports.postuser = async (req, res, next) => {
     console.log(req.body);
-    const {name,id,Language,Framework} = req.body;
-    Server.findOne({id : id}).then ((person)=>{
-        if (person)
-        {
-            res.send("Id must be unique , Try with another id");
+    const { name, id, Language, Framework } = req.body;
+    await User.findOne({ id: id }).then(async (person) => {
+        if (person) {
+            res.status(404).json("Id must be unique , Try with another id");
         }
-        else
-        {
-            const newserver = new Server ({
+        else {
+            const newuser = new User({
                 name,
                 id,
                 Language,
                 Framework
             });
-            newserver.save().then((user) => {
+            await newuser.save().then((user) => {
                 res.send(user);
-            }).catch(next);
+            }).catch(err => res.status(500).json(err));
         }
-        
+
     })
 }
 
 //update server object
-exports.updateserver = (req,res)=>{
-  
-    Server.findOneAndUpdate({id:req.body.id},req.body).then ( ()=>{
-        Server.findOne({id: req.body.id}).then((person)=>{
-            if(!person)
-               res.send("No server with such id , Try with other id");
+exports.updateuser = async (req, res) => {
+ 
+    var id = req.params.id;
+    await User.findOneAndUpdate({ id: id }, req.body).then(async () => {
+        await User.findOne({ id: req.body.id }).then((person) => {
+            if (!person)
+            res.status(404).json("No server with such id , Try with other id");
             else
-               res.send(person)
-        })
-    })
+                res.send(person)
+        }).catch(err => res.status(500).json(err));
+    }).catch(err => res.status(500).json(err));
 }
 
 //delete server object by passing id as params
-exports.deleteserver = (req,res)=>{
-    var id = req.params.id ;
-    Server.findOneAndRemove({ id : id}).then((person)=>{
-        if(!person)
-            res.send("No server with such id , Try with other id");
+exports.deleteuser = async (req, res) => {
+    var id = req.params.id;
+    await User.findOneAndRemove({ id: id }).then((person) => {
+        if (!person)
+        res.status(404).json("No server with such id , Try with other id");
         else
             res.send(person);
-    })
+    }).catch(err => res.status(500).json(err));
 }
